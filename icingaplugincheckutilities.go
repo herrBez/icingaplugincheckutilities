@@ -15,6 +15,18 @@ type PerformanceData struct {
 	Critical *float64
 }
 
+const (
+	OK       = 0
+	WARNING  = 1
+	CRITICAL = 2
+	UNKNOWN  = 3
+)
+
+const (
+	UP   = 0
+	DOWN = 2
+)
+
 // Help Function that from a literal returns a pointer containing this value
 func CreateFloat(value float64) *float64 {
 	return &value
