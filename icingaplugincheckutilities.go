@@ -6,12 +6,12 @@ import (
 )
 
 type PerformanceData struct {
-	value    float64
-	uom      string
-	min      *float64
-	max      *float64
-	warning  *float64
-	critical *float64
+	Value    float64
+	Uom      string
+	Min      *float64
+	Max      *float64
+	Warning  *float64
+	Critical *float64
 }
 
 // Help Function that from a literal returns a pointer containing this value
@@ -41,12 +41,12 @@ func RenderPerformanceData(performance_data map[string]PerformanceData) string {
 	for k, v := range performance_data {
 		output += fmt.Sprintf("'%s'=%0.5f%s;%s;%s;%s;%s ",
 			normalizePerformanceDataKey(k),
-			v.value,
-			v.uom,
-			renderPerformancePointer(v.warning),
-			renderPerformancePointer(v.critical),
-			renderPerformancePointer(v.min),
-			renderPerformancePointer(v.max),
+			v.Value,
+			v.Uom,
+			renderPerformancePointer(v.Warning),
+			renderPerformancePointer(v.Critical),
+			renderPerformancePointer(v.Min),
+			renderPerformancePointer(v.Max),
 		)
 	}
 	return output

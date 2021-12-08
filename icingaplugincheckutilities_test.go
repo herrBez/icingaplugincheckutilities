@@ -8,16 +8,16 @@ import (
 func TestPerformanceData(t *testing.T) {
 	p := map[string]PerformanceData{
 		"foo": {
-			value: 5.123,
-			uom:   "s",
+			Value: 5.123,
+			Uom:   "s",
 		},
 		"ba'r": {
-			value:    60.5,
-			uom:      "b",
-			warning:  CreateFloat(50.0),
-			critical: CreateFloat(75.0),
-			min:      CreateFloat(0.0),
-			max:      CreateFloat(100.0),
+			Value:    60.5,
+			Uom:      "b",
+			Warning:  CreateFloat(50.0),
+			Critical: CreateFloat(75.0),
+			Min:      CreateFloat(0.0),
+			Max:      CreateFloat(100.0),
 		},
 	}
 	s := RenderPerformanceData(p)
