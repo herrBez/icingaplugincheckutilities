@@ -2,6 +2,7 @@ package icingaplugincheckutilities
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -50,4 +51,9 @@ func RenderPerformanceData(performance_data map[string]PerformanceData) string {
 		)
 	}
 	return output
+}
+
+func PrintAndExit(exit_status int, message string, perf map[string]PerformanceData) {
+	fmt.Printf("%s%s", message, RenderPerformanceData(perf))
+	os.Exit(exit_status)
 }
