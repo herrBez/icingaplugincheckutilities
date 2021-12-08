@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-type performanceData struct {
+type PerformanceData struct {
 	value    float64
 	uom      string
 	min      *float64
@@ -33,7 +33,7 @@ func normalizePerformanceDataKey(key string) string {
 	return tmp
 }
 
-func RenderPerformanceData(performance_data map[string]performanceData) string {
+func RenderPerformanceData(performance_data map[string]PerformanceData) string {
 	if len(performance_data) == 0 {
 		return ""
 	}

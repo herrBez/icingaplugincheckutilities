@@ -6,7 +6,7 @@ import (
 )
 
 func TestPerformanceData(t *testing.T) {
-	p := map[string]performanceData{
+	p := map[string]PerformanceData{
 		"foo": {
 			value: 5.123,
 			uom:   "s",
