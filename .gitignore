@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: 2021 Jane Doe <jane@example.com>
+#
+# SPDX-License-Identifier: CC0-1.0
+#
+# Source: https://github.com/github/gitignore/blob/main/Go.gitignore
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

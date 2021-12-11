@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2021 Mirko Bez <bez.mirko@gmail.com>
+ *
+ * SPDX-License-Identifier: MIT
+ */
 package icingaplugincheckutilities
 
 import (

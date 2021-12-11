@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 Mirko Bez <bez.mirko@gmail.com>
+
+SPDX-License-Identifier: MIT
+-->
+
 # Icinga Plugin Check Utilities
 
 This go module contains set of utilities to simplify the development of Plugin Check Commands.
@@ -24,7 +30,11 @@ func main() {
 			Uom:   "",
 		},
 	}
-	ipcu.PrintAndExit(ipcu.WARNING, "This is a warning message", perf)
+	status, err = icpu.ComputeExitStatus(perf, "f'oo", icpu.StatusFuncGte)
+	if err != nil {
+		return icpu.PrintAndExit(icpu.UNKNOWN, err, perf)
+	}
+	ipcu.PrintAndExit(status, "This is a warning message", perf)
 }
 ```
 
@@ -32,4 +42,13 @@ The result is:
 
 ```
 This is a warning message | 'bar'=12.00000;;;; 'f"oo'=8.00000%;7.00000;9.00000;;
+```
+
+And the exit status will be `1`.
+
+
+## Run the test
+
+```sh
+go test
 ```
