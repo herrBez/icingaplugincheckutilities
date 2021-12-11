@@ -5,6 +5,7 @@ SPDX-License-Identifier: MIT
 -->
 
 # Icinga Plugin Check Utilities
+[![REUSE status](https://api.reuse.software/badge/github.com/herrBez/icingaplugincheckutilities)](https://api.reuse.software/info/github.com/herrBez/icingaplugincheckutilities)
 
 This go module contains set of utilities to simplify the development of Plugin Check Commands.
 
