@@ -1,6 +1,7 @@
 package icingaplugincheckutilities
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -63,6 +64,44 @@ func RenderPerformanceData(performance_data map[string]PerformanceData) string {
 		)
 	}
 	return output
+}
+
+type StatusFunc func(PerformanceData) (int, error)
+
+func StatusFuncGte(p PerformanceData) (int, error) {
+	if p.Critical == nil || p.Warning == nil {
+		return UNKNOWN, errors.New("Critical or Warning Threshold not defined")
+	}
+	if *p.Critical <= *p.Warning {
+		return UNKNOWN, errors.New("Critical Threshold should be greather than Warning Threshold")
+	}
+	if p.Value >= *p.Critical {
+		return CRITICAL, nil
+	} else if p.Value >= *p.Warning {
+		return WARNING, nil
+	} else {
+		return OK, nil
+	}
+}
+func StatusFuncLte(p PerformanceData) (int, error) {
+	if p.Critical == nil || p.Warning == nil {
+		return UNKNOWN, errors.New("Critical or Warning Threshold not defined")
+	}
+	if *p.Critical >= *p.Warning {
+		return UNKNOWN, errors.New("Critical Threshold should be smaller than Warning Threshold")
+	}
+	if p.Value <= *p.Critical {
+		return CRITICAL, nil
+	} else if p.Value <= *p.Warning {
+		return WARNING, nil
+	} else {
+		return OK, nil
+	}
+}
+
+func ComputeExitStatus(perf map[string]PerformanceData, key string, status_func StatusFunc) (int, error) {
+	p := perf[key]
+	return status_func(p)
 }
 
 func PrintAndExit(exit_status int, message string, perf map[string]PerformanceData) {
